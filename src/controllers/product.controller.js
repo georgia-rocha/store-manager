@@ -1,8 +1,8 @@
-const { findAll, findById } = require('../services/product.service');
+const productService = require('../services/product.service');
 const errorMap = require('../utils/errorMap');
 
 const listProducts = async (_req, res) => {
-  const { type, message } = await findAll();
+  const { type, message } = await productService.findAll();
 
   if (type) return res.status(errorMap.mapError(type)).json(message);
 
@@ -11,7 +11,7 @@ const listProducts = async (_req, res) => {
 
 const getProduct = async (req, res) => {
   const { id } = req.params;
-  const { type, message } = await findById(id);
+  const { type, message } = await productService.findById(id);
 
   if (type) {
     return res.status(errorMap.mapError(type)).json({ message });
@@ -20,7 +20,18 @@ const getProduct = async (req, res) => {
   return res.status(200).json(message);
 };
 
+const createProduct = async (req, res) => {
+  const { name } = req.body;
+console.log(req.body);
+  const { type, message } = await productService.createProduct(name);
+
+  if (type) return res.status(errorMap.mapError(type)).json(message);
+
+  res.status(201).json(message);
+};
+
 module.exports = {
   listProducts,
-  getProduct,  
+  getProduct,
+  createProduct,
 };

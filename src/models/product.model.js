@@ -1,5 +1,5 @@
 const camelize = require('camelize');
-// const snakeize = require('snakeize');
+const snakeize = require('snakeize');
 const connection = require('./connection');
 
 const findProductsAll = async () => {
@@ -17,7 +17,23 @@ const findProductById = async (productId) => {
   return camelize(result);
 };
 
+const insertProduct = async (product) => {
+  const columns = Object.keys(snakeize(product)).join(', ');
+
+  const placeholders = Object.keys(product)
+    .map((_key) => '?')
+    .join(', ');
+
+  const [{ insertId }] = await connection.execute(
+    `INSERT INTO products (${columns}) VALUE (${placeholders})`,
+    [...Object.values(product)],
+  );
+
+  return insertId;
+};
+
 module.exports = {
   findProductsAll,
   findProductById,
+  insertProduct,
 };
