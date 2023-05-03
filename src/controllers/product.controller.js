@@ -12,9 +12,8 @@ const listProducts = async (_req, res) => {
 const getProduct = async (req, res) => {
   const { id } = req.params;
   const { type, message } = await findById(id);
-  console.log(message);
+
   if (type) {
-    console.log('aaaa');
     return res.status(errorMap.mapError(type)).json({ message });
   }
 
