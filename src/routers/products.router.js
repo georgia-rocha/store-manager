@@ -20,8 +20,4 @@ router.post(
   productsController.createProduct,
 );
 
-/* router.post('/sales',
-  salesController.createSales,
-); */
-
 module.exports = router;

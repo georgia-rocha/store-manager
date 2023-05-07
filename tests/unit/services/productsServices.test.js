@@ -8,7 +8,7 @@ const { expect } = chai;
 
 const productsModel = require('../../../src/models/product.model');
 const productsService = require('../../../src/services/product.service');
-const { products, productId } = require('../mocks/products.mock');
+const { products, productId, newProduct } = require('../mocks/products.mock');
 
 describe('Testes de unidade do Service de products', () => {
   it('Testa se a função sem passar dados', async () => {
@@ -49,6 +49,14 @@ describe('Testes de unidade do Service de products', () => {
     expect(result.message).to.be.equal('Product not found');
   });
 
+  it('Cadastrando novo product', async () => {
+    sinon.stub(productsModel, 'insertProduct').resolves(1);
+    sinon.stub(productsModel, 'findProductById').resolves(newProduct);
+
+    const err = await productsService.createProduct('ProdutoX');
+    expect(err.message).to.equal(newProduct);
+  });
+  
   afterEach(function () {
     sinon.restore();
   });

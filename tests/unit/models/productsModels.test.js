@@ -3,9 +3,9 @@ const sinon = require('sinon');
 const { productModel } = require('../../../src/models');
 
 const connection = require('../../../src/models/connection');
-const { products, productId } = require('../mocks/products.mock');
+const { products, productId, newProduct } = require('../mocks/products.mock');
 
-describe('Testes de unidade do model de products', function () {
+describe('Testes de unidade do model de products', () => {
   it('Recuperando a lista de produtos', async function () {
     sinon.stub(connection, 'execute').resolves([products]);
   
@@ -15,7 +15,7 @@ describe('Testes de unidade do model de products', function () {
     expect(result).to.have.length(3);
   });
 
-  it('Recuperando um produto a partir do seu id', async function () {
+  it('Recuperando um produto a partir do seu id', async () => {
     sinon.stub(connection, 'execute').resolves([[products[0]]]);
 
     const result = await productModel.findProductById(1);
@@ -24,13 +24,23 @@ describe('Testes de unidade do model de products', function () {
     expect(result).to.be.an('object')
   });
 
-  it('Tentando recuperar um produto inexistente', async function () {
+  it('Tentando recuperar um produto inexistente', async () => {
     sinon.stub(connection, 'execute').throws(new Error('Product not found'));
     try {
       await productModel.findProductById(999);
       expect.fail();
     } catch (e) {
       expect(e.message).to.be.equal('Product not found');
+    }
+  });
+
+  it('Cadrastrando um novo produto', async () => {
+    sinon.stub(connection, 'execute').resolves([{ insertId: 4 }]);
+    try {
+      const result = await productModel.insertProduct(newProduct);
+      expect(result).to.equal(4);
+    } catch (e) {
+      console.log(e);
     }
   });
 
