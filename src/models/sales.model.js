@@ -15,7 +15,7 @@ const findSalesAll = async () => {
 
 const findSalesById = async (saleId) => {
   const [sale] = await connection.execute(
-    `SELECT sa.date, sp.product_id, sp.quantity
+    `SELECT sp.product_id, sp.quantity
     FROM StoreManager.sales_products AS sp
     INNER JOIN StoreManager.sales AS sa
     ON sp.sale_id = sa.id
@@ -27,7 +27,22 @@ const findSalesById = async (saleId) => {
   return camelize(sale);
 };
 
+const insertSales = async (sale) => {
+  const [{ insertId }] = await connection.execute(
+    'INSERT INTO StoreManager.sales (date) VALUES (NOW());',
+  );
+  await Promise.all(sale.map(async ({ productId, quantity }) => {
+      await connection.execute(
+        'INSERT INTO StoreManager.sales_products (sale_id, product_id, quantity) VALUES (?, ?, ?)',
+        [insertId, productId, quantity],
+      );
+    }));
+
+  return insertId;
+};
+
 module.exports = {
   findSalesAll,
   findSalesById,
+  insertSales,
 };

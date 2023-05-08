@@ -115,5 +115,85 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "366dd842-6c25-4db9-a158-923f566907c5",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3001/sales",
+    "url": "http://localhost:3001/sales",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-08T17:58:03.790Z",
+    "modified": "2023-05-08T17:58:03.790Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "13933bfd-d8f8-4dea-bc23-a8604b0580ec",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/sales",
+    "url": "http://localhost:3001/sales",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-05-08T17:58:15.831Z",
+    "modified": "2023-05-08T23:23:18.358Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 1\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 5\n  }\n]",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "0af1921f-004d-490f-8050-f52621f1dff7",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/sales/1",
+    "url": "http://localhost:3000/sales/1",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-08T18:07:49.574Z",
+    "modified": "2023-05-08T18:07:49.574Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "7f06947f-404b-4311-990a-74fd0f7a34d2",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/sales/2",
+    "url": "http://localhost:3000/sales/2",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-08T18:35:14.082Z",
+    "modified": "2023-05-08T18:35:14.082Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "4a2ce55f-d9de-4c4c-9e8e-0de54bd31b2b",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/sales",
+    "url": "http://localhost:3000/sales",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-05-08T20:03:06.101Z",
+    "modified": "2023-05-08T20:03:06.101Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "[\n  {\n    \"productId\": 1,\n    \"quantity\": 1\n  },\n  {\n    \"productId\": 2,\n    \"quantity\": 5\n  }\n]",
+      "form": []
+    },
+    "tests": []
   }
 ]

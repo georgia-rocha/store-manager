@@ -20,7 +20,18 @@ const getSalesId = async (req, res) => {
   return res.status(200).json(message);
 };
 
+const createSales = async (req, res) => {
+  const { body } = req;
+
+  const { type, message } = await salesService.createSales(body);
+
+  if (type) return res.status(errorMap.mapError(type)).json({ message });
+
+  return res.status(201).json(message);
+};
+
 module.exports = {
   listSales,
   getSalesId,
+  createSales,
 };
