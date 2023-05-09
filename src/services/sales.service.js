@@ -23,13 +23,15 @@ const createSales = async (sale) => {
 
   const newSaleId = await salesModel.insertSales(sale);
   const newSales = await salesModel.findSalesById(newSaleId);
-  console.log(newSaleId);
+  const sales = newSales.map((saleNew) => (
+    { productId: saleNew.productId, quantity: saleNew.quantity }));
+  console.log(sales);
 
   return {
     type: null,
     message: {
       id: newSaleId,
-      itemsSold: newSales,
+      itemsSold: sales,
   } };
 };
 
