@@ -44,7 +44,7 @@ describe('Testes de unidade do Controller de products', () => {
   
   it('Testando falha na função findById', async () => {
     sinon.stub(productsService, 'findById').resolves({
-      type: "PRODUCT_NOT_FOUND",
+      type: "NOT_FOUND",
       message: 'Product not found',
     });
 

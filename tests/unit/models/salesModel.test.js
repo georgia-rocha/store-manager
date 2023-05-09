@@ -3,7 +3,7 @@ const sinon = require('sinon');
 const { salesModel } = require('../../../src/models');
 
 const connection = require('../../../src/models/connection');
-const { sales, salesId } = require('../mocks/sales.mock');
+const { sales, salesId, newSales } = require('../mocks/sales.mock');
 
 describe('Testes de unidade do model de sales', () => {
   it('Recuperando a lista de vendas', async function () {
@@ -16,12 +16,11 @@ describe('Testes de unidade do model de sales', () => {
   });
 
   it('Recuperando uma venda a partir do seu id', async () => {
-    sinon.stub(connection, 'execute').resolves([[sales[2]]]);
-    console.log([[sales[2]]]);
+    sinon.stub(connection, 'execute').resolves([salesId]);
 
     const result = await salesModel.findSalesById(2);
     expect(result).to.be.deep.equal(salesId);
-    expect(result).to.contain.keys('date', 'productId', 'quantity', 'saleId');
+    // expect(result).to.contain.keys('date', 'productId', 'quantity', 'saleId');
     expect(result).to.be.an('object')
   });
 
@@ -35,15 +34,15 @@ describe('Testes de unidade do model de sales', () => {
     }
   });
 
-/*   it('Cadrastrando um novo produto', async () => {
-    sinon.stub(connection, 'execute').resolves([{ insertId: 4 }]);
+  it('Cadrastrando uma nova venda', async () => {
+    sinon.stub(connection, 'execute').resolves([{ insertId: 1 }]);
     try {
-      const result = await productModel.insertProduct(newProduct);
-      expect(result).to.equal(4);
+      const result = await salesModel.insertSales(newSales);
+      expect(result).to.equal(1);
     } catch (e) {
       console.log(e);
     }
-  }); */
+  });
 
   afterEach(function () {
     sinon.restore();

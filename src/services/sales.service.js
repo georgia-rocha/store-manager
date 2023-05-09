@@ -18,14 +18,12 @@ const findSalesById = async (salesId) => {
 
 const createSales = async (sale) => {
   const error = await validate.validateNewSale(sale);
-  console.log(error);
   if (error.type) return error;
 
   const newSaleId = await salesModel.insertSales(sale);
   const newSales = await salesModel.findSalesById(newSaleId);
   const sales = newSales.map((saleNew) => (
     { productId: saleNew.productId, quantity: saleNew.quantity }));
-  console.log(sales);
 
   return {
     type: null,

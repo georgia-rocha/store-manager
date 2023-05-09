@@ -26,8 +26,27 @@ const createProduct = async (name) => {
   return { type: null, message: newProduct };
 };
 
+const updateProductId = async (productId, productUpdate) => {
+  const validId = validate.validateId(productId);
+  console.log(validId, 'id');
+  if (validId.type) return validId;
+
+  const validName = validate.validateNewProduct(productUpdate);
+  console.log(validName, 'name');
+  if (validName.type) return validName;
+
+  const productsId = await productModel.findProductById(productId);
+  console.log(productsId, 'prodId');
+  if (!productsId) return { type: 'NOT_FOUND', message: 'Product not found' };
+
+  await productModel.updateProduct(productId, productUpdate);
+
+  return { type: null, message: { id: productId, name: productUpdate.name } };
+};
+
 module.exports = {
   findAll,
   findById,
   createProduct,
+  updateProductId,
 };

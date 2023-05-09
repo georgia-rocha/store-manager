@@ -45,7 +45,7 @@ describe('Testes de unidade do Service de products', () => {
 
     expect(result.message).to.be.an('string');
     expect(result).to.have.keys(['type', 'message']);
-    expect(result.type).to.be.equal('PRODUCT_NOT_FOUND');
+    expect(result.type).to.be.equal('NOT_FOUND');
     expect(result.message).to.be.equal('Product not found');
   });
 

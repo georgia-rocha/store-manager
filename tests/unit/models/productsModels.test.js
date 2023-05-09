@@ -40,7 +40,7 @@ describe('Testes de unidade do model de products', () => {
       const result = await productModel.insertProduct(newProduct);
       expect(result).to.equal(4);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   });
 
