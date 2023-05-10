@@ -136,15 +136,15 @@
     "containerId": "",
     "name": "http://localhost:3000/sales",
     "url": "http://localhost:3001/products/4",
-    "method": "PUT",
+    "method": "DELETE",
     "sortNum": 0,
     "created": "2023-05-08T17:58:15.831Z",
-    "modified": "2023-05-10T00:20:49.228Z",
+    "modified": "2023-05-10T02:18:10.307Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"name\": \"aa\"\n}",
+      "raw": "{\n  \"name\": \"bbbbbbb bbbbbb\"\n}",
       "form": []
     },
     "tests": []
