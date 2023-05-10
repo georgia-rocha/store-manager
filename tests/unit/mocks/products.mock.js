@@ -20,6 +20,10 @@ const newProduct = {
   "name": "ProdutoX"
 };
 
+const productUpdate = {
+  "name": "Martelo do Batman"
+};
+
 module.exports = {
   products,
   productId,

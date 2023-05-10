@@ -21,7 +21,7 @@ router.post(
 );
 
 router.put(
-  '/products',
+  '/products/:id',
   productsController.updateProductId,
 );
 
