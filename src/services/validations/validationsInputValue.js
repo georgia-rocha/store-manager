@@ -10,7 +10,7 @@ const validateId = (id) => {
 
 const validateNewProduct = (name) => {
   const { error } = addProductSchema.validate({ name });
-  console.log(error);
+
   if (error) {
     return {
       type: error.message.includes('required') ? 'INVALID_INPUT' : 'INVALID_VALUE',

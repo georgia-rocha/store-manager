@@ -33,8 +33,23 @@ const createSales = async (sale) => {
   } };
 };
 
+const deleteSales = async (id) => {
+  const salesId = await salesModel.findSalesById(id);
+  console.log('bbbb', salesId);
+  
+  if (!salesId || salesId === undefined || salesId.length === 0) {
+    return { type: 'NOT_FOUND', message: 'Sale not found' };
+  }
+
+  const sales = await salesModel.deleteSales(id);
+  console.log('aa', salesId);
+
+  return { type: null, message: sales };
+};
+
 module.exports = {
   findSalesAll,
   findSalesById,
   createSales,
+  deleteSales,
 };

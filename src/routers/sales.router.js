@@ -9,12 +9,18 @@ router.get(
 );
 
 router.get(
-  '/sales/:id', salesController.getSalesId,
+  '/sales/:id',
+  salesController.getSalesId,
 );
 
 router.post(
   '/sales',
   salesController.createSales,
+);
+
+router.delete(
+  '/sales/:id',
+  salesController.deleteSales,
 );
 
 module.exports = router;
