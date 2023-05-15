@@ -9,7 +9,7 @@ A API que foi construída é um sistema de gerenciamento de vendas no formato dr
 - [**Node JS**](https://nodejs.org/en/)
 - [**Express**](https://expressjs.com/pt-br/)
 - [**Https Status Code**](https://www.npmjs.com/package/http-status-codes)
-- [**Thunder Cliente**](https://www.thunderclient.com/)
+- [**Thunder Client**](https://www.thunderclient.com/)
 - [**Nodemon**](https://www.npmjs.com/package/nodemon)
 - [**Linter**](https://eslint.org/docs/latest/)
 - [**Mocha**](https://mochajs.org/)
