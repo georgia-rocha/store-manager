@@ -40,10 +40,10 @@ cd store-manager
   ## Com Docker
  
   > Rode o serviço `node` com o comando `docker-compose up -d`.
-  - Esse serviço irá inicializar um container chamado `talker_manager`.
+  - Esse serviço irá inicializar um container chamado `store_manager`.
   - A partir daqui você pode rodar o container via CLI ou abri-lo no VS Code.
 
-  > Use o comando `docker exec -it talker_manager bash`.
+  > Use o comando `docker exec -it store_manager bash`.
   - Ele te dará acesso ao terminal interativo do container criado pelo compose, que está rodando em segundo plano.
 
   > Instale as dependências [**Caso existam**] com `npm install`
